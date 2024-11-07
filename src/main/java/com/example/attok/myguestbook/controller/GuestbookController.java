@@ -25,4 +25,13 @@ public class GuestbookController {
     public String listGuestbook() {
         return "guestbook/list";
     }
+
+    @GetMapping("/guestbook/serachByNickname")
+    public String searchGuestbookByNickname(){
+        return "guestbook/listNN";
+    }
+    @GetMapping("/guestbook/searchByIP")
+    public String searchGuestbookByIP(){
+        return "guestbook/listIP";
+    }
 }
