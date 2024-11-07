@@ -16,7 +16,7 @@ public class Guestbook {
     private Long id;        // id
 
     @Column(nullable=false)
-    private String nickName;    // 닉네임
+    private String nickname;    // 닉네임
 
     @Column(nullable=false)
     private String password;    // 비밀번호
