@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class GuestbookService {
@@ -21,7 +22,7 @@ public class GuestbookService {
     public void addGuestbook(GuestbookDTO guestbookDTO) {
         Guestbook guestbook = new Guestbook();
 
-        guestbook.setNickName(guestbookDTO.getNickname());
+        guestbook.setNickname(guestbookDTO.getNickname());
         guestbook.setPassword(passwordEncoder.encode(guestbookDTO.getPassword()));
         guestbook.setIP(guestbookDTO.getIp());
         guestbook.setContent(guestbookDTO.getContent());
@@ -31,7 +32,16 @@ public class GuestbookService {
         // 작성 날짜 자동 설정
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         guestbook.setRegDate(LocalDateTime.now().format(formatter));
-
         guestbookRepository.save(guestbook);
+
+
+
+
+    }
+    public List<Guestbook> findGuestbookByNickname(String nickname){
+        return guestbookRepository.findByNickname(nickname);
+    }
+    public List<Guestbook> findGuestbookByIP(String ip){
+        return guestbookRepository.findByIP(ip);
     }
 }
