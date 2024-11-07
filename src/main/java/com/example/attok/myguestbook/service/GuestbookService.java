@@ -36,12 +36,15 @@ public class GuestbookService {
 
 
 
+    }
 
-    }
-    public List<Guestbook> findGuestbookByNickname(String nickname){
-        return guestbookRepository.findByNickname(nickname);
-    }
-    public List<Guestbook> findGuestbookByIP(String ip){
-        return guestbookRepository.findByIP(ip);
+//    public List<Guestbook> findGuestbookByNickname(String nickname){
+//        return guestbookRepository.findByNickname(nickname);
+//    }
+//    public List<Guestbook> findGuestbookByIP(String ip){
+//        return guestbookRepository.findByIP(ip);
+//    }
+    public List<Guestbook> findGuestbookByKeyWord(String keyword){
+        return guestbookRepository.findByKeyWord(keyword);
     }
 }
