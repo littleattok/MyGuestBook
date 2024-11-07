@@ -16,4 +16,11 @@ public class GuestbookRepositoryImpl implements GuestbookRepositoryCustom {
         return entitymanager.createQuery(jpql, Guestbook.class)
                 .setParameter("nickname",nickname).getResultList();
     }
+
+    @Override
+    public List<Guestbook> findByIP(String ip) {
+        String jpql ="select g from Guestbook g where g.nickname= :ip";
+        return entitymanager.createQuery(jpql, Guestbook.class)
+                .setParameter("ip",ip).getResultList();
+    }
 }
