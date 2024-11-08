@@ -4,6 +4,7 @@ import com.example.attok.myguestbook.domain.Guestbook;
 import com.example.attok.myguestbook.domain.QGuestbook;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,9 @@ import java.util.List;
 
 @Repository
 public class GuestbookRepositoryImpl implements GuestbookRepositoryCustom {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     private final JPAQueryFactory queryFactory;
 
