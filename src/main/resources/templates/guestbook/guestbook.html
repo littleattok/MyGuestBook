@@ -1,0 +1,28 @@
+<div>
+  <h2>방명록</h2>
+
+  <!-- 새 글 작성 폼 -->
+  <form action="#" th:action="@{/guestbook}" th:object="${newEntry}" method="post">
+    <label for="nickname">닉네임:</label>
+    <input type="text" id="nickname" th:field="*{nickname}" required>
+
+    <label for="password">비밀번호:</label>
+    <input type="password" id="password" th:field="*{password}" required>
+
+    <label for="content">내용:</label>
+    <textarea id="content" th:field="*{content}" required></textarea>
+
+    <button type="submit">작성</button>
+
+  </form>
+
+  <!-- 기존 글 목록 -->
+  <h3>이전 글들</h3>
+  <ul>
+    <li th:each="entry : ${guestbookEntries}">
+      <strong th:text="${entry.nickname}">닉네임</strong>:
+      <span th:text="${entry.content}">내용</span>
+      <span th:text="${entry.regDate}">등록일</span>
+    </li>
+  </ul>
+</div>
