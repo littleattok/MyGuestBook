@@ -65,14 +65,9 @@ public class GuestbookController {
     public String searchGuestbookByIP(){
         return "guestbook/listIP";
     }
-
-
-
-
-    @PostMapping
-    public String write(Guestbook guestbook, Model model){
-        guestbookService.write(guestbook);
-        model.addAttribute("message","방명록이 등록되었습니다.");
-        return"redirect:/guestbook/list";
-    }
 }
+
+
+
+
+
