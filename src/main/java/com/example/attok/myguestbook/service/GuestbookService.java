@@ -14,8 +14,19 @@ import java.util.List;
 @Service
 public class GuestbookService {
 
+    private final GuestbookRepository guestbookRepository;
+
     @Autowired
-    private GuestbookRepository guestbookRepository;
+    public GuestbookService(GuestbookRepository guestbookRepository) {
+        this.guestbookRepository = guestbookRepository;
+    }
+    
+    //글쓰기
+    public Guestbook write(Guestbook guestbook){
+        return guestbookRepository.save(guestbook);
+    }
+
+
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -38,6 +49,13 @@ public class GuestbookService {
 
     }
 
+    public void addEntry(GuestbookDTO newEntry) {
+        addGuestbook(newEntry);
+    }
+    public List<Guestbook> getAllEntries(){
+       return guestbookRepository.findAll();
+    }
+
 //    public List<Guestbook> findGuestbookByNickname(String nickname){
 //        return guestbookRepository.findByNickname(nickname);
 //    }
@@ -47,4 +65,9 @@ public class GuestbookService {
     public List<Guestbook> findGuestbookByKeyWord(String keyword){
         return guestbookRepository.findByKeyWord(keyword);
     }
+
+
+
+
+
 }
