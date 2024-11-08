@@ -22,7 +22,8 @@
     <li th:each="entry : ${guestbookEntries}">
       <strong th:text="${entry.nickname}">닉네임</strong>:
       <span th:text="${entry.content}">내용</span>
-      <span th:text="${entry.regDate}">등록일</span>
+      <!-- 등록일을 yyyy-MM-dd HH:mm:ss 형식으로 출력 -->
+      <td th:text="${#temporals.format(entry.regDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
     </li>
   </ul>
 </div>

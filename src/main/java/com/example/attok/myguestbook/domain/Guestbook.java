@@ -4,11 +4,15 @@ package com.example.attok.myguestbook.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="guestbook")
+@Table(name="GUESTBOOK")
 public class Guestbook {
 
     @Id
@@ -22,12 +26,13 @@ public class Guestbook {
     private String password;    // 비밀번호
 
     @Column(nullable=false)
-    private String IP;         // IP주소
+    private String ip;         // IP주소
 
     @Column(nullable=false, length=1000)
     private String content;     // 본문
 
-    @Column
-    private String regDate;     // 등록일
+    @CreationTimestamp
+    @Column(nullable=false, updatable=false)
+    private LocalDateTime regDate;     // 등록일
 
 }

@@ -35,14 +35,14 @@ public class GuestbookService {
 
         guestbook.setNickname(guestbookDTO.getNickname());
         guestbook.setPassword(passwordEncoder.encode(guestbookDTO.getPassword()));
-        guestbook.setIP(guestbookDTO.getIp());
+        guestbook.setIp(guestbookDTO.getIp());
         guestbook.setContent(guestbookDTO.getContent());
         guestbook.setRegDate(guestbookDTO.getRegDate());
 
 
-        // 작성 날짜 자동 설정
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        guestbook.setRegDate(LocalDateTime.now().format(formatter));
+        // 작성 날짜 자동 설정 -> String을 Date로 바꿨기에 필요 없어짐
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//        guestbook.setRegDate(LocalDateTime.now().format(formatter));
         guestbookRepository.save(guestbook);
 
 

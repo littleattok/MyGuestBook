@@ -3,6 +3,8 @@ package com.example.attok.myguestbook.domain;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class GuestbookDTO {
     private Long id;
@@ -10,5 +12,5 @@ public class GuestbookDTO {
     private String password;
     private String ip;
     private String content;
-    private String regDate;
+    private LocalDateTime regDate;
 }
